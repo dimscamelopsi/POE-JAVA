@@ -8,7 +8,8 @@ public class LoginManager {
     private String login;
 
     private String password;
-
+    // Injection de dépendance en dessous (dependency injunction)
+    // LoginManager est une classe métier, c'est un service
     private StudentRepository studentRepository = new StudentRepository();
 
     public String getLogin() {
@@ -41,5 +42,10 @@ public class LoginManager {
         return "404 Not Found";
     }
 
-    public void logout() {}
+    public void logout() {
+        Student student = this.studentRepository.findByLoginAndPassword(this.login, this.password);
+        if ( student instanceof Student) {
+            student.isLoggedIn(false);
+        }
+    }
 }

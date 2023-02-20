@@ -28,7 +28,7 @@ public class StudentRepository {
         Student student = new Student("Endive","Chicon", "chicon.endive@picardie.com");
         student.setUsername("toutou");
         student.setPassword("youtou");
-
+        System.out.println(student);
         // Add student to list
         this.students.add(student);
     }

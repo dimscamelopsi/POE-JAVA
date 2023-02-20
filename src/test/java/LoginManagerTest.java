@@ -47,4 +47,17 @@ public class LoginManagerTest {
 
         assertEquals(true, student.isLoggedIn());
     }
+
+    @Test
+    @DisplayName("Student is logged out")
+    public void studentLogout() {
+        StudentRepository studentRepository = this.loginManager.getStudentRepository();
+        Student student = studentRepository.findByLoginAndPassword("toutou","youtou");
+
+        assertEquals(true, student.isLoggedIn());
+
+        this.loginManager.logout();
+
+        assertEquals(false, student.isLoggedIn());
+    }
 }
